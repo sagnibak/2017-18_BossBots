@@ -60,8 +60,6 @@ public class OpMode_PID extends LinearOpMode {
     DcMotor leftMotor = null;
     DcMotor rightMotor = null;
 
-    //does PID_v2.0 work?
-
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");

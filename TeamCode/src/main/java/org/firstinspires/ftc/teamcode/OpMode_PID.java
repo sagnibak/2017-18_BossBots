@@ -60,8 +60,6 @@ public class OpMode_PID extends LinearOpMode {
     DcMotor leftMotor = null;
     DcMotor rightMotor = null;
 
-    //a random comment to make sure GitHub is working
-
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");

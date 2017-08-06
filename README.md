@@ -1,6 +1,14 @@
 ﻿# ftc_app for BossBots
 FTC Android Studio project consisting of the FTC Robot Controller app used by Team #524, the BossBots of [Campolindo High School](https://www.acalanes.k12.ca.us/campolindo), Moraga, California.
 
+## Phase 1:
+### TeleOp:
+Get last year's code.
+
+### Autonomous:
+Drive the robot, record it, have the robot mimic our movement.
+
+
 *Below is the readme for the bare-bones app as released by FTC. We are leaving that part untouched for now, in case we want to look at it. Before releasing this code, we might want to remove it.*
 
 

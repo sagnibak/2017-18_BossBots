@@ -3,7 +3,8 @@ FTC Android Studio project consisting of the FTC Robot Controller app used by Te
 
 ## Phase 1:
 ### TeleOp:
-Get last year's code.
+* Get last year's code.
+* Make a separate MotorDriver class.
 
 ### Autonomous:
 Drive the robot, record it, have the robot mimic our movement.

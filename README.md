@@ -9,6 +9,13 @@ FTC Android Studio project consisting of the FTC Robot Controller app used by Te
 ### Autonomous:
 Drive the robot, record it, have the robot mimic our movement.
 
+## To-Do:
+* Make OpMode_Training ► Sagnick Bhattacharya (offcially spelled Sagnik Bhattacharya; feel free to use either spelling)
+* Make OpMode_TeleOp ► Shahab Sadeghinejad
+* Make OpMode_Auto ► (This will be assigned once class Navigator and class MotorDriver are ready.)
+* Class Navigator: Reads the encoders, calculates x-, y- and theta-displacements. Outputs the same. ► Sagnik? Marc Schultz?
+* Class MotorDriver: Takes input  ► Mark Lindblad
+
 
 *Below is the readme for the bare-bones app as released by FTC. We are leaving that part untouched for now, in case we want to look at it. Before releasing this code, we might want to remove it.*
 

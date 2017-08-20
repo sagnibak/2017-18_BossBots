@@ -22,13 +22,12 @@ import com.qualcomm.robotcore.util.Range;
 public abstract class Driver extends OpMode implements Navigation{
     public double powerMotor1 = 0.0, powerMotor2 = 0.0,
                   powerMotor3 = 0.0, powerMotor4 = 0.0;
+    private float powerScale = 1.2f;  // increase this up to a little more than sqrt(2) to allow intuitive turning
 
     public void setMotorPower(float joystickX, float joystickY, float turnStick){
-        joystickX = joystickX/2;
-        joystickY = -joystickY/2;
+        joystickX = joystickX/powerScale;
+        joystickY = -joystickY/powerScale;
 
-        joystickX = Range.clip(joystickX, -1, 1);
-        joystickY = Range.clip(joystickY, -1, 1);
         turnStick = Range.clip(turnStick, -1, 1);
 
         if (turnStick == 0) {
@@ -45,5 +44,10 @@ public abstract class Driver extends OpMode implements Navigation{
             powerMotor3 = turnStick;
             powerMotor4 = turnStick;
         }
+
+        powerMotor1 = Range.clip(powerMotor1, -1, 1);
+        powerMotor1 = Range.clip(powerMotor2, -1, 1);
+        powerMotor1 = Range.clip(powerMotor3, -1, 1);
+        powerMotor1 = Range.clip(powerMotor4, -1, 1);
     }
 }

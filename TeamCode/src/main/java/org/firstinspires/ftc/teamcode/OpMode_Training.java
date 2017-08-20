@@ -32,6 +32,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode;
 
+import android.content.Context;
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -40,6 +42,8 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -75,8 +79,13 @@ public class OpMode_Training extends Driver {
 
     // store the joystick and trigger states (to control direction, speed, and rotation in place)
     private float joystickHorizontal, joystickVertical, triggerRight, triggerLeft;
-    private float encMotor1, encMotor2, encMotor3, encMotor4;
+    public float encMotor1, encMotor2, encMotor3, encMotor4;
     private boolean dirMotor1, dirMotor2, dirMotor3, dirMotor4;
+
+    // stuff to save output to a `.csv` file
+    private String csvString = "";
+    private String filename = "AutoMoves.csv";
+    FileOutputStream outputStream;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -141,6 +150,29 @@ public class OpMode_Training extends Driver {
         motor2.setPower(powerMotor2);
         motor3.setPower(powerMotor3);
         motor4.setPower(powerMotor4);
+
+        // press `b` on gamepad1 to record current position,
+        // and reset all the encoders
+        if (gamepad1.b) {
+            String str1 = Integer.toString(motor1.getCurrentPosition());
+            String str2 = Integer.toString(motor2.getCurrentPosition());
+            String str3 = Integer.toString(motor3.getCurrentPosition());
+            String str4 = Integer.toString(motor4.getCurrentPosition());
+
+            csvString += str1 + "," + str2 + "," + str3 + "," + str4 + "\n";
+
+            telemetry.addData("Going to save the following:\n", csvString);
+
+            motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            motor3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            motor4.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            motor1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motor2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motor3.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motor4.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        }
     }
 
     /*
@@ -149,5 +181,4 @@ public class OpMode_Training extends Driver {
     @Override
     public void stop() {
     }
-
 }

@@ -62,13 +62,10 @@ import java.util.concurrent.TimeUnit;
 )
 
 @TeleOp(name="Template: Iterative OpMode", group="Iterative Opmode")  // @Autonomous(...) is the other common choice
-
-@Disabled
+//@Disabled
 public class OpMode_Training extends Driver {
     /* Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
 
     // This will move to an abstract class with `public` modifiers
     private DcMotor motor1;
@@ -138,7 +135,12 @@ public class OpMode_Training extends Driver {
         triggerLeft = gamepad1.left_trigger;
         triggerRight = gamepad1.right_trigger;
 
+        setMotorPower(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
 
+        motor1.setPower(powerMotor1);
+        motor2.setPower(powerMotor2);
+        motor3.setPower(powerMotor3);
+        motor4.setPower(powerMotor4);
     }
 
     /*

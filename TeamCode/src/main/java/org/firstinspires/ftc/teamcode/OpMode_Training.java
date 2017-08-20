@@ -66,10 +66,10 @@ import java.util.concurrent.TimeUnit;
 
 @Contributions(
         ModifiedBy = {"Sagnick Bhattcharya"},
-        LastModifiedOn = "08/09/2017"
+        LastModifiedOn = "08/20/2017"
 )
 
-@TeleOp(name="Template: Iterative OpMode", group="Iterative Opmode")  // @Autonomous(...) is the other common choice
+@TeleOp(name="Training OpMode", group="Iterative Opmode")  // @Autonomous(...) is the other common choice
 //@Disabled
 public class OpMode_Training extends Driver {
     /* Declare OpMode members. */
@@ -80,11 +80,6 @@ public class OpMode_Training extends Driver {
     private DcMotor motor2;
     private DcMotor motor3;
     private DcMotor motor4;
-
-    // store the joystick and trigger states (to control direction, speed, and rotation in place)
-    private float joystickHorizontal, joystickVertical, triggerRight, triggerLeft;
-    public float encMotor1, encMotor2, encMotor3, encMotor4;
-    private boolean dirMotor1, dirMotor2, dirMotor3, dirMotor4;
 
     // stuff to save output to a `.csv` file
     private FileOutputStream fos = null;
@@ -140,15 +135,9 @@ public class OpMode_Training extends Driver {
     public void loop() {
         telemetry.addData("Status", "Running: " + runtime.toString());
 
-        telemetry.addData("Joystick Horizontal Value", joystickHorizontal);
-        telemetry.addData("Joystick Vertical Value", joystickVertical);
-        telemetry.addData("Left Bumper State", (int) triggerLeft);
-        telemetry.addData("Right Bumper State", (int) triggerRight);
-
-        joystickHorizontal = gamepad1.left_stick_x;
-        joystickVertical = gamepad1.left_stick_y;
-        triggerLeft = gamepad1.left_trigger;
-        triggerRight = gamepad1.right_trigger;
+        telemetry.addData("Left Joystick Horizontal Value: ", gamepad1.left_stick_x);
+        telemetry.addData("Left Joystick Vertical Value: ", gamepad1.left_stick_y);
+        telemetry.addData("Right Joystick Horizontal Value: ", gamepad1.right_stick_x);
 
         setMotorPower(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
 

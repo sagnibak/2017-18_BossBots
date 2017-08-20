@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -42,8 +43,11 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -83,9 +87,11 @@ public class OpMode_Training extends Driver {
     private boolean dirMotor1, dirMotor2, dirMotor3, dirMotor4;
 
     // stuff to save output to a `.csv` file
+    private FileOutputStream fos = null;
+    private File file;
+    private String filePath = "/emulatedstorage/AutoData.csv";  // needs to be initialized appropriately
     private String csvString = "";
     private String filename = "AutoMoves.csv";
-    FileOutputStream outputStream;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -180,5 +186,32 @@ public class OpMode_Training extends Driver {
      */
     @Override
     public void stop() {
+        try {
+            file = new File(filePath);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            fos = new FileOutputStream(file);
+            byte[] bytesArray = csvString.getBytes();
+
+            fos.write(bytesArray);
+            fos.flush();
+
+            telemetry.addData("%s", "Auto saved successfully!");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                fos.close();
+                telemetry.addData("%s", "File closed.");
+            }
+            catch (IOException ioe){
+                ioe.printStackTrace();
+            }
+        }
     }
 }

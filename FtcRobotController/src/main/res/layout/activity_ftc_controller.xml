@@ -118,6 +118,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       android:visibility="invisible"
       android:text="" />
 
+      <!--Button
+          android:id="@+id/checkpointSaver"
+          android:layout_width="150dp"
+          android:layout_height="60dp"
+          android:text="@string/checkpointSaver"
+          android:onClick="saveCheckpoint"
+          /-->
+
     <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

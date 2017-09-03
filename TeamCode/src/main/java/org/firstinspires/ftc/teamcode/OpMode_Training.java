@@ -175,6 +175,7 @@ public class OpMode_Training extends Driver {
      */
     @Override
     public void stop() {
+        telemetry.setAutoClear(false);
         try {
             file = new File(filePath);
 

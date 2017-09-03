@@ -180,7 +180,8 @@ public class OpMode_Training extends Driver {
             file = new File(filePath);
 
             if (!file.exists()) {
-                file.createNewFile();
+                boolean created = file.createNewFile();
+                telemetry.addData("Created new file: ", created);
             }
 
             fos = new FileOutputStream(file);

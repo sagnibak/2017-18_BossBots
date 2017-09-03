@@ -84,7 +84,7 @@ public class OpMode_Training extends Driver {
     // stuff to save output to a `.csv` file
     private FileOutputStream fos = null;
     private File file;
-    private String filePath = "/emulatedstorage/AutoData.csv";  // needs to be initialized appropriately
+    private String filePath = "/storage/emulated/AutoDataFolder/AutoData1.csv";  // needs to be initialized appropriately
     private String csvString = "";
     private String filename = "AutoMoves.csv";
 

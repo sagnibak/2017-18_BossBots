@@ -11,11 +11,11 @@ import com.qualcomm.robotcore.util.Range;
     *   Motor position
     *
     * motor4     motor3
-    *    []-------[]
-    *      |     |
-    *      |     |
-    *      |     |
-    *    []-------[]
+    *    [\]-------[/]
+    *       |     |
+    *       |     |
+    *       |     |
+    *    [/]-------[\]
     *  motor1    motor2
 */
 
@@ -26,23 +26,23 @@ public abstract class Driver extends OpMode implements Navigation{
 
     public void setMotorPower(float joystickX, float joystickY, float turnStick){
         joystickX = joystickX/powerScale;
-        joystickY = -joystickY/powerScale;
+        joystickY = -joystickY/powerScale;  // because pushing the joystick forward maekes the reading more negative
 
         turnStick = Range.clip(turnStick, -1, 1);
 
         if (turnStick == 0) {
             // change the motor numbers after testing
-            powerMotor1 = (joystickY - joystickX);
-            powerMotor2 = (-joystickY - joystickX);
-            powerMotor3 = (-joystickY + joystickX);
-            powerMotor4 = (joystickY + joystickX);
+            powerMotor1 = (joystickY + joystickX);
+            powerMotor2 = (joystickY - joystickX);
+            powerMotor3 = (joystickY + joystickX);
+            powerMotor4 = (joystickY - joystickX);
         }
 
         if (turnStick != 0) {
-            powerMotor1 = turnStick;
-            powerMotor2 = turnStick;
-            powerMotor3 = turnStick;
-            powerMotor4 = turnStick;
+            powerMotor1 = -turnStick;
+            powerMotor2 = -turnStick;
+            powerMotor3 = -turnStick;
+            powerMotor4 = -turnStick;
         }
 
         powerMotor1 = Range.clip(powerMotor1, -1, 1);

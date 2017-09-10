@@ -96,11 +96,11 @@ public class OpMode_Training extends Driver {
         telemetry.addData("Status", "Initialized");
 
         motor1 = hardwareMap.dcMotor.get("motor1");
-//        motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor1.setDirection(DcMotorSimple.Direction.REVERSE);
         motor2 = hardwareMap.dcMotor.get("motor2");
         motor3 = hardwareMap.dcMotor.get("motor3");
         motor4 = hardwareMap.dcMotor.get("motor4");
-//        motor4.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor4.setDirection(DcMotorSimple.Direction.REVERSE);
 
         motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -140,7 +140,6 @@ public class OpMode_Training extends Driver {
         telemetry.addData("Right Joystick Horizontal Value: ", gamepad1.right_stick_x);
 
         setMotorPower(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
-
         motor1.setPower(powerMotor1);
         motor2.setPower(powerMotor2);
         motor3.setPower(powerMotor3);

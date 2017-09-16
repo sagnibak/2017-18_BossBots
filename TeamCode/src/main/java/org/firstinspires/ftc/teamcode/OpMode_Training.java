@@ -96,11 +96,11 @@ public class OpMode_Training extends Driver {
         telemetry.addData("Status", "Initialized");
 
         motor1 = hardwareMap.dcMotor.get("motor1");
-        motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor1.setDirection(DcMotor.Direction.REVERSE);
         motor2 = hardwareMap.dcMotor.get("motor2");
         motor3 = hardwareMap.dcMotor.get("motor3");
         motor4 = hardwareMap.dcMotor.get("motor4");
-        motor4.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor4.setDirection(DcMotor.Direction.REVERSE);
 
         motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

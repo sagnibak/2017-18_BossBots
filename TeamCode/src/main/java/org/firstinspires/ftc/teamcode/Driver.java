@@ -11,11 +11,11 @@ import com.qualcomm.robotcore.util.Range;
     *   Motor position
     *
     * motor4     motor3
-    *    [\]-------[/]
-    *       |     |
-    *       |     |
-    *       |     |
     *    [/]-------[\]
+    *       |     |
+    *       |     |
+    *       |     |
+    *    [\]-------[/]
     *  motor1    motor2
 */
 

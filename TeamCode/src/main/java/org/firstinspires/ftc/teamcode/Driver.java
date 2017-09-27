@@ -19,7 +19,7 @@ import com.qualcomm.robotcore.util.Range;
  *       |     |
  *    [/]-------[\]
  *  motor1    motor2
- * 
+ *
  * Direction     X  Y  Actuation
  *  Forward      0  -   All forward same speed
  *  Reverse      0  +   All backward same speed

@@ -41,17 +41,17 @@ public abstract class Driver extends OpMode implements Navigation{
         turnStick = Range.clip(turnStick, -1, 1);
 
         if (turnStick == 0) {
-            powerMotor1 = (joystickY + joystickX);
-            powerMotor2 = (joystickY - joystickX);
-            powerMotor3 = (joystickY + joystickX);
-            powerMotor4 = (joystickY - joystickX);
+            powerMotor1 = (joystickY - joystickX);
+            powerMotor2 = (joystickY + joystickX);
+            powerMotor3 = (joystickY - joystickX);
+            powerMotor4 = (joystickY + joystickX);
         }
 
         if (turnStick != 0) {
-            powerMotor1 = -turnStick;
+            powerMotor1 = +turnStick;
             powerMotor2 = -turnStick;
             powerMotor3 = -turnStick;
-            powerMotor4 = -turnStick;
+            powerMotor4 = +turnStick;
         }
 
         powerMotor1 = Range.clip(powerMotor1, -1, 1);
